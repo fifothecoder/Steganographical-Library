@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract Classes\WAVFile.cs" />
+    <Compile Include="Abstracts\WAVFile.cs" />
     <Compile Include="Interfaces\IConstructor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
