@@ -44,12 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\Helpers.cs" />
     <Compile Include="Abstracts\WAVFile.cs" />
     <Compile Include="Interfaces\IConstructor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="File Constructors\WAVConstructor.cs" />
     <Compile Include="File Hiders\WAVHider.cs" />
+    <Compile Include="Validators\WAVValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

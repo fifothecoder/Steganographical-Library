@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Steganographical_Library.Abstracts;
+using Steganographical_Library.Validators;
 
 namespace StegoLib
 {
@@ -15,28 +18,16 @@ namespace StegoLib
 
 
             var wav = new WAVConstructor("testing.wav");
-            wav.Construct(LoadDataFile());
+            wav.Construct(Helpers.LoadDataFile("wav", "mp3").ToArray());
+
+            /*var valid = new WAVValidator("testing.wav");
+            bool isValid = valid.Validate();*/
+
+
             Console.WriteLine("Completed!");
             Console.ReadKey(true);
         }
 
-        static byte[] LoadDataFile() {
-
-            List<byte> data = new List<byte>();
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    using (StreamReader reader = new StreamReader(ofd.FileName)) {
-                        while (!reader.EndOfStream) {
-                            data.Add(byte.Parse(reader.ReadLine()));
-                        }
-                    }
-                }
-            }
-
-            return data.ToArray();
-
-        }
+        
     }
 }
