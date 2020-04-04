@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Steganographical_Library.Abstracts;
 using StegoLib.Abstract_Classes;
 
 namespace Steganographical_Library.Validators
 {
-    class WAVValidator : WAVFile
+    sealed class WAVValidator : WAVFile
     {
-        public WAVValidator(string target) {
-            _targetPath = target;
-            _data = new List<byte>();
+        public WAVValidator(string target) : base(target) {
+            _data = File.ReadAllBytes(_targetPath).ToList();
         }
 
         public bool Validate() {
@@ -35,7 +36,7 @@ namespace Steganographical_Library.Validators
             //Check datasize
             long dataSize = _data[4] + _data[5] * 256 + _data[6] * 65536 + _data[7] * 16777216;
             dataSize /= 8;
-            if (_data.Count - 44 != dataSize) return false;
+            if (_data.Count - 8 != dataSize) return false;
 
             //Check File Size
             long fileSize = _data[40] + _data[41] * 256 + _data[42] * 65536 + _data[43] * 16777216;

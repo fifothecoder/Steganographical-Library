@@ -10,6 +10,11 @@ namespace StegoLib.Abstract_Classes
         protected List<byte> _data;
         protected string _targetPath;
 
+        protected WAVFile(string target) {
+            _targetPath = target;
+            _data = new List<byte>();
+        }
+
         protected virtual byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)

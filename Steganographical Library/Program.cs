@@ -16,12 +16,14 @@ namespace StegoLib
         [STAThread]
         static void Main(string[] args) {
 
+            byte[] arr = new byte[50000];
+            for (int i = 0; i < 50000; i++) { arr[i] = 120; }
 
             var wav = new WAVConstructor("testing.wav");
-            wav.Construct(Helpers.LoadDataFile("wav", "mp3").ToArray());
+            wav.Construct(arr);
 
-            /*var valid = new WAVValidator("testing.wav");
-            bool isValid = valid.Validate();*/
+            var valid = new WAVValidator("testing.wav");
+            bool isValid = valid.Validate();
 
 
             Console.WriteLine("Completed!");

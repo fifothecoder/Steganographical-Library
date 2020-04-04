@@ -66,6 +66,7 @@ namespace Steganographical_Library.Abstracts
             uint startPoint = 0;
 
             for (uint i = 0; i < source.Length - 8; i++) {
+                //Detect DATA header
                 if (source[i] == 100 && source[i + 1] == 97 && source[i + 2] == 116 && source[i + 3] == 97) {
                     startPoint = i + 8;
                     break;

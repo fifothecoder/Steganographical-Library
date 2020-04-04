@@ -8,12 +8,11 @@ using StegoLib.Interfaces;
 
 namespace StegoLib
 {
-    class WAVConstructor : WAVFile, IConstructor
+    sealed class WAVConstructor : WAVFile, IConstructor
     {
 
-        public WAVConstructor(string target) {
-            _targetPath = target;
-            _data = new List<byte>();
+        public WAVConstructor(string target) : base(target) {
+            //Nothing here yet
         }
 
         public void Construct(byte[] dataBytes = null)  {
